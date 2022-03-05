@@ -8,6 +8,6 @@ model Item {
 
 model ShoppingListItems {
     id     Int  @id
-    item   Item @relation(fields: [itemId], references: [id])
     itemId Int
+    item   Item @relation(fields: [itemId], references: [id])
 }

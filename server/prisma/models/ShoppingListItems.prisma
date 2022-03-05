@@ -19,9 +19,8 @@ model ShoppingList {
 }
 
 model Item {
-    id                  Int                 @id
-    shoppingListItemsId Int
-    ShoppingListItems   ShoppingListItems[]
+    id                Int                 @id
+    ShoppingListItems ShoppingListItems[]
 }
 
 model Brand {
