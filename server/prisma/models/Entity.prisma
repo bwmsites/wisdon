@@ -1,0 +1,13 @@
+model Entity {
+    id           Int           @id
+    name         String
+    shoppingList ShoppingList?
+
+    @@map("entity")
+}
+
+model ShoppingList {
+    id       Int    @id
+    entity   Entity @relation(fields: [entityId], references: [id])
+    entityId Int    @unique
+}

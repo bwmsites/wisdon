@@ -1,0 +1,30 @@
+model ShoppingListItems {
+    id             Int          @id @default(autoincrement())
+    shoppingListId Int          @map("shopping_list_id")
+    shoppingList   ShoppingList @relation(fields: [shoppingListId], references: [id])
+    itemId         Int          @map("item_id")
+    item           Item         @relation(fields: [itemId], references: [id])
+    quantity       Float        @default(1)
+    price          Float?
+    amount         Float?
+    brandId        Int?         @map("brand_id")
+    brand          Brand?       @relation(fields: [brandId], references: [id])
+
+    @@map("shopping_list_items")
+}
+
+model ShoppingList {
+    id                Int                 @id
+    shoppingListItems ShoppingListItems[]
+}
+
+model Item {
+    id                  Int                 @id
+    shoppingListItemsId Int
+    ShoppingListItems   ShoppingListItems[]
+}
+
+model Brand {
+    id                Int                 @id
+    ShoppingListItems ShoppingListItems[]
+}

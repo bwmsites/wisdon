@@ -1,0 +1,13 @@
+model Item {
+    id                Int                 @id @default(autoincrement())
+    name              String
+    ShoppingListItems ShoppingListItems[]
+
+    @@map("item")
+}
+
+model ShoppingListItems {
+    id     Int  @id
+    item   Item @relation(fields: [itemId], references: [id])
+    itemId Int
+}

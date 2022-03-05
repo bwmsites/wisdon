@@ -1,0 +1,20 @@
+enum ShoppingListStatusEnum {
+    COMPLETED
+    OPENED
+}
+
+model ShoppingList {
+    id          Int                    @id @default(autoincrement())
+    description String?
+    date        DateTime               @default(now())
+    status      ShoppingListStatusEnum @default(OPENED)
+    entityId    Int?                   @unique @map("entity_id")
+    entity      Entity?                @relation(fields: [entityId], references: [id])
+
+    @@map("shopping_list")
+}
+
+model Entity {
+    id           Int           @id
+    shoppingList ShoppingList?
+}

@@ -1,0 +1,13 @@
+model Brand {
+    id                Int                 @id @default(autoincrement())
+    name              String
+    ShoppingListItems ShoppingListItems[]
+
+    @@map("brand")
+}
+
+model ShoppingListItems {
+    id      Int    @id
+    brandId Int?
+    brand   Brand? @relation(fields: [brandId], references: [id])
+}
